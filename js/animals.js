@@ -7,6 +7,7 @@ $(document).ready(function () {
     document.getElementById('search').addEventListener('change', searchChange);
     document.getElementById('search').addEventListener('keyup', searchChange);
     document.getElementById('search').addEventListener('paste', searchChange);
+    console.log(JSON.parse(localStorage["save"]));
     if (JSON.parse(localStorage["save"]) != "undefined") {
         data = JSON.parse(localStorage["save"]);
     }
