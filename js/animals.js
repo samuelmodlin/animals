@@ -7,10 +7,14 @@ $(document).ready(function () {
     document.getElementById('search').addEventListener('change', searchChange);
     document.getElementById('search').addEventListener('keyup', searchChange);
     document.getElementById('search').addEventListener('paste', searchChange);
-    console.log(JSON.parse(localStorage["save"]));
-    if (JSON.parse(localStorage["save"]) != "undefined") {
-        data = JSON.parse(localStorage["save"]);
+    var dataTemp = data;
+    try {
+      data = JSON.parse(localStorage["save"]);
+    } catch(err){
+      data = dataTemp;
+      console.log(err);
     }
+
     Handlebars.registerHelper('index_of', function (context, ndx) {
         return context[ndx];
     });
