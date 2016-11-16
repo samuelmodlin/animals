@@ -1,0 +1,41 @@
+script(id="image-template" type="text/x-handlebars-template")
+  .panel.panel-primary
+    .panel-heading
+      h3.panel-title {{title}}
+    .panel-body
+      .morph.pic
+        img.img(style="width:100%", src="{{src}}", alt="{{alt}}")
+      h5.author {{author}}
+script(id="category-template" type="text/x-handlebars-template")
+  {{#each category}}
+  .category-wrap.col-md-4.col-lg-4.col-sm-4
+    .category-content
+      .img-wrap
+        img.back(id="{{name}}", src="{{animals.[0].image1}}", data-number="{{@index}}")
+      p.title {{name}}
+  {{/each}}
+script(id="search-dialog" type="text/x-handlebars-template")
+  .alert.alert-dismissible.alert-info
+    button.close.clearSearch(type='button', data-dismiss='alert') Clear Search ×
+    strong Searching!
+    |  Search Results for {{search}}!
+script(id="item-template" type="text/x-handlebars-template")
+  {{#if categories}}
+  {{#each category}}
+  {{#each animals}}
+  .category-wrap.col-md-4.col-lg-4.col-sm-4
+    .category-content
+      .img-wrap
+        img.back(id="{{name}}", src="{{image2}}", data-category="{{@../index}}", data-index="{{@index}}")
+      p.titleItem {{name}}
+  {{/each}}
+  {{/each}}
+  {{else}}
+  {{#each animals}}
+  .category-wrap.col-md-4.col-lg-4.col-sm-4
+    .category-content
+      .img-wrap
+        img.back(id="{{name}}", src="{{image2}}", data-category="{{#index_of ../numbercategories @index}}{{/index_of}}", data-index="{{#index_of ../numbers @index}}{{/index_of}}")
+      p.titleItem {{name}}
+  {{/each}}
+  {{/if}}

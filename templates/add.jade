@@ -1,0 +1,25 @@
+.modalAdd
+  .modal.fade#modalAdd(role="dialog", aria-hidden="true")
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+          h3.modal-title
+            span.name Add Items
+        .modal-body
+          form
+            .form-group#form-name
+              label(for='name') Name:
+              input#name.form-control(placeholder = "letters only", type='text')
+            .form-group#form-src
+              label(for='src') Image Link: 
+              input#src.form-control(placeholder = "must be valid image", type='text')
+            .form-group#form-category
+              label(for='category') Category:
+              input#category.form-control(placeholder = "existing or current image", type='text')
+            .form-group#form-desc
+              label(for='desc') Description:
+              textarea#desc.form-control(rows = "6", placeholder = "letters and numbers", type='text')
+        .modal-footer
+          button.btn.btn-primary.add(type='button') Add
+          button.btn.btn-default(type='button', data-dismiss='modal') Cancel

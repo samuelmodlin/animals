@@ -1,0 +1,57 @@
+/*main scss file*/
+@import "bourbon";
+@import 'partials/mixins';
+@import 'partials/background';
+.carousel {
+  display:none;
+}
+.category-wrap {
+}
+.category-content {
+  margin: auto;
+  padding: 10px;
+  text-align: center;
+  max-width: 250px;
+  height: 250px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.title {
+  color: black;
+  font-size: 50px;
+  text-shadow: rgba(0, 0, 0, 0.2) 2px 6px 5px, rgba(255, 255, 255, 0.4) 0px -4px 30px;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: 230px;
+  transition: font-size 1s;
+
+  &:hover {
+    font-size: 55px;
+  }
+}
+
+.titleItem {
+  @extend .title;
+  color: darkblue;
+}
+
+.back {
+  border-radius: 10%;
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+  width: 100%;
+  height: 250px;
+  opacity: 0.6;
+}
+@include keyframes(text) {
+  from {
+    @include transform(scale(0));
+  }
+  to {
+    @include transform(scale(1));
+  }
+}

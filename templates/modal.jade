@@ -1,0 +1,14 @@
+script(id="modal-template" type="text/x-handlebars-template")
+  .modal.fade#modalTemplate(role="dialog", aria-hidden="true")
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+          h3.modal-title
+            span.name Name: {{name}}
+          h5
+            span.name Category: {{category}}
+        .modal-body
+          p {{description}}
+        .modal-footer
+          button.btn.btn-primary(type='button', data-dismiss='modal') Close

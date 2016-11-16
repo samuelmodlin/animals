@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Animals</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css">
+    <!--link(rel="stylesheet", href="css/bootstrap.css")-->
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" data-toggle="collapse" data-target="#navbar" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="#" class="navbar-brand">Animals of the World</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li id="0" class="item"><a id="categories">Animal Categories</a></li>
+            <li id="1" class="item"><a id="navAnimals">Animals</a></li>
+            <li id="2" class="item"> <a id="add">Add</a></li>
+          </ul>
+          <form role="search" class="navbar-form navbar-right">
+            <div class="form-group">
+              <input id="search" type="text" placeholder="Search..." class="form-control">
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div class="content"></div>
+    <div class="modalContent"></div>
+    <div class="modalAdd">
+      <div id="modalAdd" role="dialog" aria-hidden="true" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+              <h3 class="modal-title"><span class="name">Add Items</span></h3>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div id="form-name" class="form-group">
+                  <label for="name">Name:</label>
+                  <input id="name" placeholder="letters only" type="text" class="form-control">
+                </div>
+                <div id="form-src" class="form-group">
+                  <label for="src">Image Link: </label>
+                  <input id="src" placeholder="must be valid image" type="text" class="form-control">
+                </div>
+                <div id="form-category" class="form-group">
+                  <label for="category">Category:</label>
+                  <input id="category" placeholder="existing or current image" type="text" class="form-control">
+                </div>
+                <div id="form-desc" class="form-group">
+                  <label for="desc">Description:</label>
+                  <textarea id="desc" rows="6" placeholder="letters and numbers" type="text" class="form-control"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary add">Add</button>
+              <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script id="modal-template" type="text/x-handlebars-template">
+      <div id="modalTemplate" role="dialog" aria-hidden="true" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+              <h3 class="modal-title"><span class="name">Name: {{name}}</span></h3>
+              <h5><span class="name">Category: {{category}}</span></h5>
+            </div>
+            <div class="modal-body">
+              <p>{{description}}</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script id="image-template" type="text/x-handlebars-template">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{title}}</h3>
+        </div>
+        <div class="panel-body">
+          <div class="morph pic"><img style="width:100%" src="{{src}}" alt="{{alt}}" class="img"></div>
+          <h5 class="author">{{author}}</h5>
+        </div>
+      </div>
+    </script>
+    <script id="category-template" type="text/x-handlebars-template">{{#each category}}
+      <div class="category-wrap col-md-4 col-lg-4 col-sm-4">
+        <div class="category-content">
+          <div class="img-wrap"><img id="{{name}}" src="{{animals.[0].image1}}" data-number="{{@index}}" class="back"></div>
+          <p class="title">{{name}}</p>
+        </div>
+      </div>{{/each}}
+    </script>
+    <script id="search-dialog" type="text/x-handlebars-template">
+      <div class="alert alert-dismissible alert-info">
+        <button type="button" data-dismiss="alert" class="close clearSearch">Clear Search ×</button><strong>Searching!</strong> Search Results for {{search}}!
+      </div>
+    </script>
+    <script id="item-template" type="text/x-handlebars-template">
+      {{#if categories}}
+      {{#each category}}
+      {{#each animals}}
+      <div class="category-wrap col-md-4 col-lg-4 col-sm-4">
+        <div class="category-content">
+          <div class="img-wrap"><img id="{{name}}" src="{{image2}}" data-category="{{@../index}}" data-index="{{@index}}" class="back"></div>
+          <p class="titleItem">{{name}}</p>
+        </div>
+      </div>{{/each}}
+      {{/each}}
+      {{else}}
+      {{#each animals}}
+      <div class="category-wrap col-md-4 col-lg-4 col-sm-4">
+        <div class="category-content">
+          <div class="img-wrap"><img id="{{name}}" src="{{image2}}" data-category="{{#index_of ../numbercategories @index}}{{/index_of}}" data-index="{{#index_of ../numbers @index}}{{/index_of}}" class="back"></div>
+          <p class="titleItem">{{name}}</p>
+        </div>
+      </div>{{/each}}
+      {{/if}}
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/handlebarsjs/4.0.5/handlebars.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/animalsData.js"></script>
+    <script src="js/animals.js"></script>
+  </body>
+</html>

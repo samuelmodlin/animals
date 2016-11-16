@@ -1,0 +1,6 @@
+@mixin border($radius, $type, $color) {
+  -webkit-border: $radius $type $color;
+     -moz-border: $radius $type $color;
+      -ms-border: $radius $type $color;
+          border: $radius $type $color;
+}

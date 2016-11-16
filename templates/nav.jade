@@ -1,0 +1,19 @@
+nav.navbar.navbar-default
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar')
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href='#') Animals of the World
+    #navbar.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li.item#0
+          a#categories Animal Categories
+        li.item#1
+          a#navAnimals Animals
+        li.item#2 
+          a#add Add
+      form.navbar-form.navbar-right(role='search')
+        .form-group
+          input.form-control#search(type='text', placeholder='Search...')
