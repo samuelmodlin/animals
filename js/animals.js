@@ -7,7 +7,7 @@ $(document).ready(function () {
     document.getElementById('search').addEventListener('change', searchChange);
     document.getElementById('search').addEventListener('keyup', searchChange);
     document.getElementById('search').addEventListener('paste', searchChange);
-    if (!(JSON.parse(localStorage["save"]) === null)) {
+    if (JSON.parse(localStorage["save"]) != "undefined") {
         data = JSON.parse(localStorage["save"]);
     }
     Handlebars.registerHelper('index_of', function (context, ndx) {
