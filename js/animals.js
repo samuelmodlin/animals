@@ -118,12 +118,14 @@ function add() {
 
 $(document).on('mouseover', '.title', function () {
     element = $(this).prev().find('.back');
+    element.addClass('hover');
     text = $(this);
     element.animate({
         'opacity': '1'
     }, 350);
 });
 $(document).on('mouseout', '.title', function () {
+    element.removeClass('hover');
     element.animate({
         'opacity': '0.6'
     }, 350);
@@ -158,6 +160,7 @@ $(document).on('click', '.clearSearch', function () {
 });
 $(document).on('mouseover', '.titleItem', function () {
     element = $(this).prev().find('.back');
+    element.addClass('hover');
     var id = element.data('number');
     var counter = 0;
     text = $(this);
@@ -166,6 +169,7 @@ $(document).on('mouseover', '.titleItem', function () {
     }, 350);
 });
 $(document).on('mouseout', '.titleItem', function () {
+    element.removeClass('hover');
     element.animate({
         'opacity': '0.6'
     }, 350);
